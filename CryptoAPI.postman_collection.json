@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "609ca4a5-3b8e-4c7a-a3db-fb9df7bdd429",
+		"name": "CryptoAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14097459"
+	},
+	"item": [
+		{
+			"name": "3PartyAPIResponse",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CMC_PRO_API_KEY",
+						"value": "27ab17d1-215f-49e5-9ca4-afd48810c149",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC,ETHLTC",
+					"protocol": "https",
+					"host": [
+						"pro-api",
+						"coinmarketcap",
+						"com"
+					],
+					"path": [
+						"v1",
+						"cryptocurrency",
+						"quotes",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTC,ETHLTC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"kanchan1\",\r\n    \"password\":\"12345678\",\r\n    \"firstName\": \"kanchan\",\r\n    \"lastName\": \"sharma\",\r\n    \"mobile\": \"9662558307\",\r\n    \"email\":\"kanchan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYW5jaGFuIiwiaWF0IjoxNzE2NTQ2MzQ4LCJleHAiOjE3MTY1NjQzNDh9.USm22j4crQo3U10iO1oI5WgWc3TtInC-KMXP3x3KSoPZDWXCey9rV3vTMCTwqKQQ2iaYnmpmQVQ4eWJpX4PFUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"kanchan\",\r\n    \"password\":\"12345678\",\r\n    \"firstName\": \"kanchan\",\r\n    \"lastName\": \"sharma\",\r\n    \"mobile\": \"9662558307\",\r\n    \"email\":\"kanchan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"kanchan\",\r\n    \"password\":\"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CryptoSearch",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYW5jaGFuIiwiaWF0IjoxNzE2NTQ2MzQ4LCJleHAiOjE3MTY1NjQzNDh9.USm22j4crQo3U10iO1oI5WgWc3TtInC-KMXP3x3KSoPZDWXCey9rV3vTMCTwqKQQ2iaYnmpmQVQ4eWJpX4PFUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYW5jaGFuIiwiaWF0IjoxNzE2NTQ2MzQ4LCJleHAiOjE3MTY1NjQzNDh9.USm22j4crQo3U10iO1oI5WgWc3TtInC-KMXP3x3KSoPZDWXCey9rV3vTMCTwqKQQ2iaYnmpmQVQ4eWJpX4PFUQ",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/cryptocurrency/search?symbols=BTC,ETHLTC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cryptocurrency",
+						"search"
+					],
+					"query": [
+						{
+							"key": "symbols",
+							"value": "BTC,ETHLTC"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
