@@ -10,19 +10,7 @@ public class UserDTO {
 	private String username;
 
 	@Size(min = 8, max = 15, message = "Password length must be between 8 and 15 characters")
-	/*
-	 * @Pattern.List({ @Pattern(regexp = ".*[a-z].*", message =
-	 * "Password must contain at least one lowercase letter"),
-	 * 
-	 * @Pattern(regexp = ".*[A-Z].*", message =
-	 * "Password must contain at least one uppercase letter"),
-	 * 
-	 * @Pattern(regexp = ".*\\d.*", message =
-	 * "Password must contain at least one digit"),
-	 * 
-	 * @Pattern(regexp = ".*[!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?].*", message =
-	 * "Password must contain at least one special character") })
-	 */private String password;
+	private String password;
 
 	@NotBlank(message = "First name is required")
 	private String firstName;
@@ -35,6 +23,8 @@ public class UserDTO {
 
 	@NotBlank(message = "Mobile number is required")
 	private String mobile;
+	
+	private String pan;
 
 	// Getters and setters
 	public String getUsername() {
@@ -83,5 +73,13 @@ public class UserDTO {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
 	}
 }

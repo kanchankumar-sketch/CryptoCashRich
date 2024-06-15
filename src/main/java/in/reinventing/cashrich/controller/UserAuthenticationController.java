@@ -1,4 +1,5 @@
 package in.reinventing.cashrich.controller;
+import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,6 @@ public class UserAuthenticationController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO) throws Exception {
         
     	if (userRepository.findByUsernameOrEmail(userDTO.getUsername(),userDTO.getEmail()).isPresent()) {
-           // return ResponseEntity.badRequest().body("Username is already taken");
     		throw new UserAlreadyPresentException();
         }
 
@@ -73,6 +73,8 @@ public class UserAuthenticationController {
         user.setLastName(userDTO.getLastName());
         user.setEmail(userDTO.getEmail());
         user.setMobile(userDTO.getMobile());
+       // user.setPan(Base64.getEncoder().encodeToString(userDTO.getPan().getBytes()));
+        user.setPan(userDTO.getPan());
 
         userRepository.save(user);
         return ResponseEntity.ok("User registered successfully");
@@ -91,6 +93,7 @@ public class UserAuthenticationController {
         user.setLastName(userDTO.getLastName());
         user.setEmail(userDTO.getEmail());
         user.setMobile(userDTO.getMobile());
+        user.setPan(Base64.getEncoder().encodeToString(userDTO.getPan().getBytes()));
 
         userRepository.save(user);
         return ResponseEntity.ok("User updated successfully");

@@ -21,6 +21,9 @@ public class CryptocurrencyData {
 
     @Column(nullable = false)
     private String symbol;
+    
+    @Column
+    private String name;
 
     @Column(nullable = false)
     private BigDecimal price;
@@ -70,6 +73,16 @@ public class CryptocurrencyData {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

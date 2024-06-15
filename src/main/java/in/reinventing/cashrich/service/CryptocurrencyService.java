@@ -3,6 +3,7 @@ package in.reinventing.cashrich.service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,8 +70,10 @@ public class CryptocurrencyService {
             data.setSymbol(symbol);
             try {
 	            Double priceExtracted=extractPrice(symbol);
+	            String name=extractName(symbol);
 	            BigDecimal price=new BigDecimal(priceExtracted);
 	            data.setPrice(price);
+	            data.setName(name);
             }catch(Exception e) {
             	e.printStackTrace();
             }
@@ -88,5 +91,12 @@ public class CryptocurrencyService {
         JsonNode root = objectMapper.readTree(this.responseObject.getBody());
         JsonNode priceNode = root.path("data").path(symbol).path("quote").path("USD").path("price");
         return priceNode.asDouble();
+    }
+    
+    public String extractName(String symbol) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(this.responseObject.getBody());
+        JsonNode priceNode = root.path("data").path(symbol).path("name");
+        return priceNode.asText();
     }
 }
